@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./index.css";
+import "./assets/styles/fonts.css";
+import "./assets/styles/app.css";
+import { Layout } from "./components/layout/layout";
+import Landing from "./views/landing";
+import AuthView from "./views/authView";
+import SearchView from "./views/searchView";
+import ResultView from "./views/resultView";
+import userInfo from "./store/user";
+
+const useUserInfo = new userInfo();
+
+export const Context = createContext({ useUserInfo });
 
 function App() {
+  const loadData = async () => {
+    useUserInfo.checkAuth();
+  };
+  useEffect(() => {
+    loadData();
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Context.Provider value={{ useUserInfo }}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Landing />} />
+            <Route path="login" element={<AuthView />} />
+            <Route path="search" element={<SearchView />} />
+            <Route path="result" element={<ResultView />} />
+          </Route>
+        </Routes>
+      </Context.Provider>
+    </>
   );
 }
 
