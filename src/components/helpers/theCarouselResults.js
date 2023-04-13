@@ -10,14 +10,9 @@ import { observer } from "mobx-react-lite";
 const CarouselResult = (props) => {
   const info = new resultInfo();
   const [result, getResult] = useState();
-  const [total, getTotal] = useState(0);
 
   const loadInfo = async () => {
-    if (info.histogram) return;
     await info.getHistogram(getResult, props.sum);
-    if (info.histogram === 0) {
-      setTimeout(loadInfo, 4000);
-    }
   };
   useEffect(() => {
     loadInfo();

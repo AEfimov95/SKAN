@@ -16,11 +16,12 @@ export const Context = createContext({ useUserInfo });
 
 function App() {
   const loadData = async () => {
-    useUserInfo.checkAuth();
+    await useUserInfo.checkAuth();
+    await useUserInfo.getInfo();
   };
   useEffect(() => {
     loadData();
-  });
+  },[]);
 
   return (
     <>

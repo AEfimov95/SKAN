@@ -9,8 +9,6 @@ const CompanyCounter = () => {
   const [info, setInfo] = useState();
   const loadInfo = async () => {
     if (!useUserInfo.isAuth) return;
-    if (info) return;
-    await useUserInfo.getInfo();
     if (useUserInfo.accountInfo === undefined) {
       setTimeout(loadInfo, 5000);
     } else {

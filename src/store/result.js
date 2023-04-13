@@ -14,7 +14,10 @@ export default class resultInfo {
     const period = [];
     const total = [];
     const risks = [];
-    if (!data.data[0]) return;
+    if (!data.data[0]) {
+      method([{ period: '-', total: '-', risks: '-' }])
+      return;
+    };
     data.data[0].data.forEach((item) => {
       period.push(format(new Date(item.date), "dd.MM.yyyy"));
     });
