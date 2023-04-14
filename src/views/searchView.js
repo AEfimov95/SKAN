@@ -30,6 +30,7 @@ function SearchView() {
   const [taxIdError, setTaxIdError] = useState("");
   const [sumDocError, setSumDocError] = useState("");
   const [dateError, setDateError] = useState("");
+  const isError = useRef(false);
 
   const tonality = [
     { value: "any", name: "Любая" },
@@ -109,24 +110,25 @@ function SearchView() {
   };
 
   const getData = async () => {
+    isError.current = false
     formDate(startDate);
     formDate(endDate);
     if (!validateInn(taxId)) {
       setTaxIdError("Введите корректные данные");
-      return;
+      isError.current = true
     }
     if (sumDoc > 1000 || sumDoc < 1) {
       setSumDocError("Введите корректные данные");
-      return;
+      isError.current = true
     }
     if (
       new Date(formStartDate.current).getTime() >
       new Date(formEndDate.current).getTime()
     ) {
       setDateError("Введите корректные данные");
-      return;
+      isError.current = true
     }
-    if (taxIdError || sumDocError || dateError) return;
+    if (isError.current) return;
     const requestBody = {
       issueDateInterval: {
         startDate: formStartDate.current,
