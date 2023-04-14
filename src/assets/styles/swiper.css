@@ -1,0 +1,12 @@
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    z-index: 1000;
+    cursor: pointer;
+    user-select:none;
+  }
+  .swiper {
+    margin: 0!important;
+  }

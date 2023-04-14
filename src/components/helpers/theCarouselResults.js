@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation } from "swiper";
 import ChevronIcon from "../icons/chevronIcon.js";
 import "swiper/css";
+import "../../assets/styles/swiper.css";
 import resultInfo from "../../store/result.js";
 import preloader from "../../assets/img/preloader__header.svg";
 import { observer } from "mobx-react-lite";
@@ -63,23 +64,6 @@ const CarouselResult = (props) => {
                 </div>
               </SwiperSlide>
             ))}
-
-            <style>
-              {`
-          .swiper-button-prev, .swiper-button-next {
-            position: absolute;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            z-index: 1000;
-            cursor: pointer;
-            user-select:none;
-          }
-          .swiper {
-            margin: 0!important;
-          }
-        `}
-            </style>
           </Swiper>
         </div>
       )}

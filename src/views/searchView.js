@@ -193,7 +193,6 @@ function SearchView() {
       })
       .catch(() => {
         alert("Проблема с сервером. Попробуйте позже.");
-        return;
       });
     await objectSearch
       .apiV1ObjectsearchHistogramsPost(true, requestBody, {
@@ -203,12 +202,11 @@ function SearchView() {
       })
       .then((response) => {
         localStorage.setItem("histogramData", JSON.stringify(response));
+        navigate("/result");
       })
       .catch(() => {
         alert("Проблема с сервером. Попробуйте позже.");
-        return;
       });
-    navigate("/result");
   };
 
   useEffect(() => {

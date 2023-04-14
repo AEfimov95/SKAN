@@ -84,19 +84,19 @@ const ResultCard = () => {
           <div className="flex justify-between flex-wrap mb-[109px]">
             {parseCards.slice(0, offSet).map((item, index) => (
               <div
-                className="flex-col shadow-[0_0_20px_rgba(0,0,0,0.2)] w-full md:w-[641px] rounded-[10px] pt-[20px] px-[24px] md:px-[30px] pb-[35px] mb-[20px] break-all"
+                className="flex-col shadow-[0_0_20px_rgba(0,0,0,0.2)] w-full md:w-[641px] rounded-[10px] pt-[20px] px-[24px] md:px-[30px] pb-[35px] mb-[20px]"
                 key={index}
               >
                 <div className="flex text-[#949494] text-sm">
                   <span className="mr-[20px] min-w-[90px]">{item.date}</span>
                   <a
-                    className="underline decoration-solid"
+                    className="underline decoration-solid "
                     href={item.articleUrl}
                   >
                     {item.articleUrlTitle}
                   </a>
                 </div>
-                <h4 className="font-medium md:text-2xl mt-[21px] mb-[20px] md:mb-[14px]">
+                <h4 className="font-medium md:text-2xl mt-[21px] mb-[20px] md:mb-[14px] whitespace-pre-wrap">
                   {item.articleTitle}
                 </h4>
                 {item.articleTags &&
@@ -116,7 +116,7 @@ const ResultCard = () => {
                   />
                 )}
                 <div
-                  className="opacity-50"
+                  className="opacity-50 whitespace-pre-line"
                   dangerouslySetInnerHTML={{ __html: item.articleContent }}
                 />
                 <div className="flex justify-between">
